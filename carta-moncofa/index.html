@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Carta La Rosa dei Venti Moncofa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Carta de La Rosa dei Venti en Moncofa, en español e inglés, con alérgenos.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap">
+<style>
+/* Layout: sticky bar (back + ES/EN + category chips), hero, one band per category with its watercolour beside or below the list, allergen legend last. Single light look on purpose: the watercolours are painted on white paper. */
+:root{
+  --paper:#FFFFFF; --ink:#0B2238; --muted:#4A6178; --line:#D3DCE5; --band:#0A437C; --band-ink:#F2F5F8; --ember:#C8471E; --soft:#EEF3F8;
+  --f-display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutr:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 var(--f-body);padding-left:0;padding-right:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:30}
+.wrap{max-width:1000px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+
+/* sticky bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:8px}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:.9rem;padding:8px 2px;color:var(--band)}
+.back:hover{text-decoration:underline}
+.lang{display:inline-flex;border:1.5px solid var(--band);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;padding:6px 14px;font-weight:700;font-size:.85rem;letter-spacing:.06em;color:var(--band)}
+.lang button{display:inline-flex;align-items:center;gap:7px}
+.lang button[aria-pressed="true"]{background:var(--band);color:#fff}
+.fl{height:14px;flex:none;box-shadow:0 0 0 1px rgba(11,34,56,.25)}
+.fl-es{width:21px}
+.fl-uk{width:28px}
+.lang button[aria-pressed="true"] .fl{box-shadow:0 0 0 1px rgba(255,255,255,.7)}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-block:2px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;font-size:.88rem;font-weight:600;color:var(--muted);white-space:nowrap}
+.cats button[aria-current="true"]{background:var(--band);border-color:var(--band);color:#fff}
+
+/* hero */
+.hero{text-align:center;padding-top:28px}
+.eyebrow{margin:0;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.hero h1{margin:6px 0 0;font:700 clamp(2.4rem,9vw,3.6rem)/1.05 var(--f-display);color:var(--band);text-wrap:balance}
+.hero .sub{margin:6px 0 0;font:italic 500 1.15rem/1.3 var(--f-display);color:var(--ink)}
+.hero img{display:block;width:100%;max-width:640px;height:auto;margin:6px auto 0}
+
+/* specials of the day */
+.special{margin:8px 0 0;padding:16px 18px;border:2px solid var(--ember);border-radius:6px;background:#FFF6F1}
+.special h2{margin:0 0 8px;font:700 1.2rem var(--f-display);color:var(--ember)}
+
+/* sections */
+.sec{padding-block:34px 8px;scroll-margin-top:118px}
+.sec h2.band{display:inline-flex;align-items:center;gap:12px;margin:0 0 20px calc(-1 * var(--gut));padding:10px 28px 10px calc(var(--gut) + 2px);background:var(--band);color:var(--band-ink);font:600 clamp(1.3rem,5vw,1.8rem)/1.1 var(--f-display);letter-spacing:.12em;text-transform:uppercase}
+.sec h2.band svg{width:26px;height:26px;flex:0 0 auto}
+.sec .note{margin:-8px 0 16px;font:italic 500 .98rem var(--f-display);color:var(--muted)}
+.body{display:grid;gap:20px}
+.list{min-width:0}
+figure{margin:0}
+figure img{display:block;height:auto}
+figure.wide img{width:100%}
+figure.side img{margin-inline:auto;max-width:100%;max-height:320px;width:auto}
+@media(min-width:820px){
+  .body.side{grid-template-columns:minmax(0,1fr) 300px;gap:44px}
+  .body.side.l{grid-template-columns:300px minmax(0,1fr)}
+  .body.side.l figure{order:-1}
+  figure.side{position:sticky;top:130px;align-self:start}
+  figure.side img{width:100%;max-height:78vh;object-fit:contain;object-position:top center}
+}
+h3.sub{margin:26px 0 12px;font:italic 600 1.25rem var(--f-display);color:var(--band);padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3.sub:first-child{margin-top:0}
+h4.grp{margin:22px 0 4px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);font-weight:700}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:start}
+.nm{font:600 1.08rem/1.3 var(--f-display);color:var(--ink);text-wrap:balance}
+.ds{margin:3px 0 0;font-size:.93rem;color:var(--muted)}
+.opt{margin:3px 0 0;font-size:.93rem;color:var(--ink);font-weight:600}
+.pr{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:2px}
+.als{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.al{width:22px;height:22px;display:block}
+.tbc{margin-top:7px;font-size:.8rem;font-weight:700;color:var(--ember)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.simple .it{align-items:baseline}
+.simple .nm{font:600 1rem/1.3 var(--f-body)}
+.simple .ds{display:inline}
+
+/* allergens */
+.legend{margin-top:48px;padding-block:34px 40px;background:var(--soft);border-top:1px solid var(--line)}
+.legend h2{margin:0 0 6px;font:700 1.7rem var(--f-display);color:var(--band)}
+.legend p{margin:0 0 22px;max-width:62ch;color:var(--muted)}
+.lg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px 16px}
+.lg li{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem}
+.lg .al{width:34px;height:34px}
+footer{padding-block:26px calc(30px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:var(--band);font-weight:700}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="a-gl" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#E07B39"/><g fill="#fff"><ellipse cx="16" cy="7.8" rx="1.8" ry="3.1"/><ellipse cx="12.2" cy="12" rx="1.8" ry="3.2" transform="rotate(-32 12.2 12)"/><ellipse cx="19.8" cy="12" rx="1.8" ry="3.2" transform="rotate(32 19.8 12)"/><ellipse cx="12.2" cy="17" rx="1.8" ry="3.2" transform="rotate(-32 12.2 17)"/><ellipse cx="19.8" cy="17" rx="1.8" ry="3.2" transform="rotate(32 19.8 17)"/></g><path d="M16 11v16" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="a-cr" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1E9AD6"/><ellipse cx="16" cy="17" rx="7" ry="5" fill="#fff"/><path d="M9.5 13.5 6.5 8.5M9.5 13.5 5 14M22.5 13.5l3-5M22.5 13.5l4.5.5M10 21l-3 3.5M12.5 22.5l-1.5 4M22 21l3 3.5M19.5 22.5l1.5 4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="a-eg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#E8A020"/><ellipse cx="12.5" cy="16.5" rx="4.3" ry="5.6" fill="#fff"/><ellipse cx="19.8" cy="14.5" rx="4.3" ry="5.6" fill="#fff" stroke="#E8A020" stroke-width="1.4"/></symbol>
+<symbol id="a-fi" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1F2A7A"/><path d="M5.5 16c4.5-6.5 11.5-6.5 15 0-3.5 6.5-10.5 6.5-15 0z" fill="#fff"/><path d="M19.5 16l7-5.5v11z" fill="#fff"/><circle cx="10.5" cy="14.6" r="1.1" fill="#1F2A7A"/></symbol>
+<symbol id="a-pe" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#B08555"/><path d="M9.5 9.5a4.2 4.2 0 0 1 6 0l1.2 1.2 1.2-1.2 0 0 0 0 5.8 5.8.4 0a4.2 4.2 0 0 1 0 6 4.2 4.2 0 0 1-6 0l-1.2-1.2-1.2 1.2a4.2 4.2 0 0 1-6-6l1.2-1.2z" fill="#fff" transform="rotate(-40 16 16) translate(1 0) scale(.95)"/></symbol>
+<symbol id="a-so" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1F9D55"/><path d="M7.5 22.5C7 14 12.5 8.5 24.5 8.5c.5 9-5 15.5-17 14z" fill="#fff"/><path d="M8 24c4-5 8-8 13-11" stroke="#1F9D55" stroke-width="1.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="a-da" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#5C2E14"/><path d="M12.5 5.5h7.5l-.6 3.8c3 1.8 4.6 4.8 4.6 8.4v6.3a1.5 1.5 0 0 1-1.5 1.5H10a1.5 1.5 0 0 1-1.5-1.5v-6.3c0-3.2 1.4-6 4-7.9z" fill="#fff"/><path d="M12 18c2-1.6 4-1.6 8 0" stroke="#5C2E14" stroke-width="1.4" fill="none"/></symbol>
+<symbol id="a-nu" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#C0524F"/><ellipse cx="16" cy="16.5" rx="8.5" ry="9.5" fill="#fff"/><path d="M16 7.5v18M11.5 10.5c2.5 3.5 2.5 8.5 0 12M20.5 10.5c-2.5 3.5-2.5 8.5 0 12" stroke="#C0524F" stroke-width="1.4" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="a-ce" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#7DBB3F"/><path d="M11.5 26.5 10 12.5M16 26.5V9.5M20.5 26.5 22 12.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="9.3" cy="9.5" r="2.8" fill="#fff"/><circle cx="16" cy="6.8" r="2.8" fill="#fff"/><circle cx="22.7" cy="9.5" r="2.8" fill="#fff"/></symbol>
+<symbol id="a-mu" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#B58A1E"/><path d="M16 6c5 6 7.5 9.5 7.5 12.5a7.5 7.5 0 0 1-15 0C8.5 15.500 11 12 16 6z" fill="#fff"/><path d="M12.5 19.5a3.600 3.600 0 0 0 3.500 3" stroke="#B58A1E" stroke-width="1.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="a-se" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#8E8B6F"/><g fill="#fff"><ellipse cx="11" cy="12" rx="2.2" ry="4" transform="rotate(-35 11 12)"/><ellipse cx="21" cy="11.500" rx="2.200" ry="4" transform="rotate(35 21 11.500)"/><ellipse cx="16" cy="21" rx="2.200" ry="4.200" transform="rotate(90 16 21)"/></g></symbol>
+<symbol id="a-su" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#7A1B5B"/><text x="16" y="19.500" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10.500" fill="#fff">SO<tspan font-size="6.500" dy="2.200">2</tspan></text></symbol>
+<symbol id="a-lu" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#E9C93E"/><g fill="#fff"><circle cx="12" cy="12.500" r="4.200"/><circle cx="20.500" cy="12.500" r="4.200"/><circle cx="16.200" cy="20.500" r="4.200"/></g></symbol>
+<symbol id="a-mo" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#31B3C6"/><path d="M16 25.500 6 14.500c2.500-7.500 17.500-7.500 20 0z" fill="#fff"/><path d="M16 25 16 11M16 25 10.500 12.500M16 25 21.500 12.500M16 25 7.800 15.500M16 25 24.200 15.500" stroke="#31B3C6" stroke-width="1.300" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="flag-es" viewBox="0 0 60 40"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></symbol>
+<symbol id="flag-uk" viewBox="0 0 60 30"><clipPath id="ukclip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukclip)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></symbol>
+<symbol id="star" viewBox="0 0 32 32"><path d="M16 1 18.200 13.800 31 16 18.200 18.200 16 31 13.800 18.200 1 16 13.800 13.800z" fill="#F2F5F8"/><path d="M16 7 17 15 25 16 17 17 16 25 15 17 7 16 15 15z" fill="#0A437C"/><circle cx="16" cy="16" r="2" fill="#F2F5F8"/></symbol>
+</defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="back" id="back" href="../">← <span data-t="back">Volver a la web</span></a>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" id="l-es" aria-pressed="true" aria-label="Español"><svg class="fl fl-es" aria-hidden="true"><use href="#flag-es"/></svg>ES</button>
+        <button type="button" id="l-en" aria-pressed="false" aria-label="English"><svg class="fl fl-uk" aria-hidden="true"><use href="#flag-uk"/></svg>EN</button>
+      </div>
+    </div>
+    <nav class="cats" id="cats" aria-label="Categorías"></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">La Rosa dei Venti</p>
+    <h1 id="h1">Carta</h1>
+    <p class="sub">Moncofa</p>
+    <img src="img/hero.webp" srcset="img/hero-sm.webp 400w, img/hero.webp 640w" sizes="(max-width:640px) 100vw, 640px" width="640" height="484" alt="" decoding="async" fetchpriority="high">
+  </div>
+  <div class="wrap" id="specials-wrap" hidden><div class="special" id="specials"></div></div>
+  <div class="wrap" id="menu"></div>
+
+  <section class="legend" id="alergenos" aria-labelledby="alh">
+    <div class="wrap">
+      <h2 id="alh">Alérgenos</h2>
+      <p id="alp"></p>
+      <ul class="lg" id="lg"></ul>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">La Rosa dei Venti · Moncofa<br><a id="back2" href="../" data-t="back">Volver a la web</a></div></footer>
+
+<script>
+/* ========= DATOS (editar aquí) =========
+   I(nombre ES, nombre EN, descripción ES, descripción EN, precio, alérgenos, extras)
+   Alérgenos: gl gluten, cr crustáceos, eg huevo, fi pescado, pe cacahuetes, so soja, da lácteos,
+              nu frutos de cáscara, ce apio, mu mostaza, se sésamo, su sulfitos, lu altramuces, mo moluscos */
+var AL={gl:['Gluten','Gluten'],cr:['Crustáceos','Crustaceans'],eg:['Huevo','Egg'],fi:['Pescado','Fish'],pe:['Cacahuetes','Peanuts'],so:['Soja','Soy'],da:['Lácteos','Dairy'],nu:['Frutos de cáscara','Nuts'],ce:['Apio','Celery'],mu:['Mostaza','Mustard'],se:['Sésamo','Sesame'],su:['Sulfitos','Sulphites'],lu:['Altramuces','Lupins'],mo:['Moluscos','Molluscs']};
+function I(a,b,c,d,p,al,x){var o={n:[a,b],d:c?[c,d]:null,p:p,a:al?al.split(' '):[]};if(x)for(var k in x)o[k]=x[k];return o}
+function G(a,b){return {grp:[a,b]}}
+var SPECIALS=[]; /* Fuera de carta hoy: añadir I('Plato','Dish','Descripción','Description',12.5,'gl da') */
+
+var UI={
+ es:{back:'Volver a la web',h1:'Carta',alh:'Alérgenos',alp:'Si tienes alguna alergia o intolerancia, díselo al personal antes de pedir. Estos son los 14 alérgenos que indicamos en cada plato.',tbc:'Alérgenos: consulta al personal',spec:'Fuera de carta hoy',cats:'Categorías'},
+ en:{back:'Back to the website',h1:'Menu',alh:'Allergens',alp:'If you have an allergy or intolerance, please tell our staff before ordering. These are the 14 allergens we mark on each dish.',tbc:'Allergens: please ask our staff',spec:"Today's specials",cats:'Categories'}
+};
+
+var S=[
+{id:'tapas',t:['Para tapear','Tapas'],fig:['compass',360,605,'side','r'],items:[
+ I('Nuestra famosa brava','Our famous patatas bravas','','',7,'eg'),
+ I('Calamares a la romana','Calamari a la romana (battered squid rings)','','',10.5,'gl mo'),
+ I('Boquerones de la lonja de Valencia','Anchovies from the Valencia fish market','','',10.5,'gl fi'),
+ I('Flor de calabaza','Courgette flower','','',4.5,'fi gl da'),
+ I('Supplì romano','Supplì romano','Croqueta de arroz artesanal con corazón de mozzarella fundida y ragú de carne','Handmade rice croquette with a melted mozzarella heart and meat ragù',3.5,'gl da'),
+ I('Marinera','Marinera','Con ensaladilla cremosa, anchoa del Cantábrico y base de hojaldre caramelizado crujiente','With creamy Russian salad, Cantabrian anchovy and a crisp caramelised puff-pastry base',4,'fi gl eg da'),
+ I('Croquetas de jamón ibérico con tartar de gambas (6 uds)','Iberian ham croquettes with prawn tartare (6 pcs)','','',12,'cr gl da')
+]},
+{id:'entrantes',t:['Entrantes','Starters'],fig:['duomo',360,1171,'side','l'],items:[
+ I('Tabla La Rosa dei Venti','La Rosa dei Venti board','Queso y fiambre italiano','Italian cheese and cold cuts',23,'gl da'),
+ I('Huevos rotos con aroma de trufa negra y virutas de parmesano','Broken eggs with black truffle aroma and parmesan shavings','','',11,'eg da'),
+ I('Provolone fundido “Mamma Mia” con corazón de pomodoro','Melted provolone “Mamma Mia” with a tomato heart','','',10,'da'),
+ I('Mejillones “Zuppetta” al vapor y limón fresco','Steamed mussels “zuppetta” with fresh lemon','','',10.5,'mo'),
+ I('Caprese de autor con burrata y helado de albahaca','Signature caprese with burrata and basil ice cream','','',12,'da'),
+ I('Zamburiñas a la llama con persillade italiana','Flame-grilled queen scallops with Italian persillade','','',14,'mo'),
+ I('Alcachofas de la huerta con crema de pecorino y crujiente de speck','Garden artichokes with pecorino cream and crispy speck','','',13.5,'da'),
+ I('Tentáculo de pulpo crujiente con parmentier y contraste de frutos silvestres','Crispy octopus tentacle with parmentier potato and wild berries','','',17,'mo'),
+ I('Parmigiana de berenjenas “capa a capa”','Layered aubergine parmigiana','','',10.5,'gl da'),
+ I('Navajas de la bahía con aroma de limón y aceite de oliva virgen','Razor clams from the bay with lemon aroma and virgin olive oil','','',12.5,'mo'),
+ I('Carpaccio de gamba blanca con burrata cremosa y pesto artesano','White prawn carpaccio with creamy burrata and homemade pesto','','',16,'cr da nu')
+]},
+{id:'ensaladas',t:['Ensaladas','Salads'],fig:['hills',760,326,'wide'],items:[
+ I('Ensalada de la huerta con atún, encurtidos y huevo de corral','Garden salad with tuna, pickles and free-range egg','','',10,'fi eg su'),
+ I('César con pollo crujiente y grana padano','Caesar salad with crispy chicken and Grana Padano','','',12,'gl eg da mu'),
+ I('Ensalada con medallón de queso de cabra caramelizado','Salad with caramelised goat cheese medallion','','',12,'da nu'),
+ I('Ensalada de salmón curado en casa con aroma de cítricos, stracciatella de burrata y yema curada','House-cured salmon salad with citrus aroma, burrata stracciatella and cured egg yolk','','',12.5,'fi da eg')
+]},
+{id:'pinsa',t:['Pinsa romana','Pinsa romana'],note:['Típica pizza romana con 3 harinas diferentes','Typical Roman pizza made with 3 different flours'],fig:['colosseo',420,644,'side','r'],items:[
+ I('Pinsa de salmón curado en casa con aguacate y Philadelphia','Pinsa with house-cured salmon, avocado and Philadelphia','','',14,'da gl fi so'),
+ I('Pinsa La Rosa dei Venti con jamón de Teruel D.O.P., burrata y canónigos','La Rosa dei Venti pinsa with Teruel ham P.D.O., burrata and lamb’s lettuce','','',13,'da gl so'),
+ I('Pinsa de scamorza ahumada con mortadella italiana y trufa','Pinsa with smoked scamorza, Italian mortadella and truffle','','',13,'da gl nu so'),
+ I('Pinsa de berenjena con tomate cherry confitado y crema de burrata','Aubergine pinsa with confit cherry tomatoes and burrata cream','','',13,'da gl so')
+]},
+{id:'pasta',t:['Pasta','Pasta'],fig:['pasta',300,1153,'side','l'],subs:[
+ {t:['Pasta secca','Dried pasta (pasta secca)'],items:[
+  I('Carbonara original','Original carbonara','La auténtica receta de Roma','The authentic Roman recipe',12.5,'gl eg da',{opt:[['Opción trufa','Truffle option',13.5]]}),
+  I('Amatriciana “Antiguo sabor”','Amatriciana “Old-time flavour”','Guanciale y nuestra salsa de tomate San Marzano cocinada a fuego lento','Guanciale and our San Marzano tomato sauce, slow-cooked',12.5,'gl da'),
+  I('Cozze e pecorino','Cozze e pecorino','El sabor del Mediterráneo italiano: espaguetis con mejillones al vapor, pimienta negra y una emulsión artesana de queso pecorino','The taste of the Italian Mediterranean: spaghetti with steamed mussels, black pepper and a handmade pecorino cheese emulsion',13.5,'mo gl da')
+ ]},
+ {t:['Pasta fresca','Fresh pasta (pasta fresca)'],items:[
+  I('Tagliolini negros “Dos Mundos”','Black tagliolini “Two Worlds”','La tradición italiana se une al sabor local. Tagliolini negros con pulpo salteado y una crema ligera de sobrasada','Italian tradition meets local flavour. Black tagliolini with sautéed octopus and a light sobrasada cream',16.5,'gl eg mo'),
+  I('Gnocchi alla sorrentina','Gnocchi alla sorrentina','Gnocchi de patata artesanos, gratinados al horno con salsa de tomate San Marzano, mozzarella fundida y el aroma fresco de la albahaca','Handmade potato gnocchi baked with San Marzano tomato sauce, melted mozzarella and the fresh aroma of basil',12.5,'gl da eg'),
+  I('Tagliatelle al ragú antiguo de la Nonna','Tagliatelle with Nonna’s old-style ragù','Pasta fresca al huevo con salsa boloñesa tradicional, rica en sabor y preparada según la receta familiar','Fresh egg pasta with traditional Bolognese sauce, rich in flavour and made to the family recipe',11.5,'gl eg da ce'),
+  I('Raviolis al bosco','Ravioli al bosco','Rellenos de setas, con una crema aterciopelada de boletus y trufa: un plato intenso para los amantes de la montaña','Filled with mushrooms, with a velvety boletus and truffle cream: an intense dish for mountain lovers',14.5,'gl eg da'),
+  I('Lasagna “Oro de Bolonia”','Lasagna “Gold of Bologna”','Láminas de pasta fresca al huevo intercaladas con nuestro ragú tradicional de larga cocción, bechamel cremosa y una costra crujiente de Parmigiano Reggiano','Layers of fresh egg pasta with our traditional slow-cooked ragù, creamy béchamel and a crisp Parmigiano Reggiano crust',12.5,'gl eg da ce')
+ ]}
+]},
+{id:'arroces',t:['Arroces','Rice'],fig:['risotto',420,464,'side','r'],items:[
+ I('Risotto marinero cremoso con gambón y almejas','Creamy seafood risotto with king prawn and clams','Arroz meloso con un sofrito tradicional, mejillones, calamares y coronado con gambones a la plancha','Rice cooked to a creamy texture with a traditional sofrito, mussels, squid and topped with grilled king prawns',16,'cr mo fi da'),
+ I('Risotto “Tierra y Dehesa” de secreto y calabaza dulce','“Land and Pasture” risotto with Iberian secreto and sweet pumpkin','Una explosión de sabores: arroz meloso con crema de calabaza artesana y la intensidad del mejor secreto ibérico braseado al momento','An explosion of flavours: risotto rice with homemade pumpkin cream and the intensity of the finest Iberian secreto pork, freshly seared',16,'da')
+]},
+{id:'carnes',t:['Carnes','Meat'],fig:['carne',300,748,'side','l'],items:[
+ I('Entrecot de buey madurado con aroma de romero y aceite de oliva','Dry-aged ox entrecôte with rosemary aroma and olive oil','','',19,''),
+ I('Milanesa gourmet con huevo escalfado y esencia de trufa','Gourmet milanesa (breaded cutlet) with poached egg and truffle essence','','',15,'gl eg'),
+ I('Gran corte de chuletón selección premium con sal Maldon','Large premium-selection chuletón (bone-in ribeye) with Maldon salt','','',65,''),
+ I('Delicia de secreto ibérico con miel silvestre y romero a la llama','Iberian secreto pork with wild honey and flame-grilled rosemary','','',15,''),
+ I('“Polpette in scarpetta”','“Polpette in scarpetta”','Albóndigas caseras con pan crujiente para mojar','Homemade meatballs with crusty bread for dipping',13.5,'gl da eg'),
+ I('Hamburguesa gourmet','Gourmet burger','Tomate, lechuga, queso, bacon, cebolla caramelizada y salsa de aguacate','Tomato, lettuce, cheese, bacon, caramelised onion and avocado sauce',13,'gl da eg'),
+ I('Hamburguesa King doble 350 gr','King double burger, 350 g','Lechuga, tomate seco, queso, cebolla fresca y barbacoa asiática','Lettuce, sun-dried tomato, cheese, fresh onion and Asian barbecue sauce',14.5,'gl da so')
+]},
+{id:'pescado',t:['Pescado','Fish'],fig:['faro',760,562,'wide'],items:[
+ I('Gran parrillada “Siete Mares” con selección de pescado y marisco (mín. 2 pax)','Grand “Seven Seas” grill platter with a selection of fish and seafood (min. 2 people)','','',37,'cr mo fi'),
+ I('Lomo de bacalao en tempura ligera con alioli negro y toque picante','Cod loin in light tempura with black aioli and a spicy touch','','',14,'fi gl eg'),
+ I('Lubina o dorada entera al punto de llama con guarnición de la casa','Whole sea bass or sea bream flame-grilled, with the house garnish','','',14,'fi'),
+ I('Gran fritura crujiente de la costa con rebozado ligero','Grand crispy fry of the coast in a light batter','','',19.5,'cr mo fi gl'),
+ I('Salmón “Tropicana” con base de aguacate y toque de pimienta rosa','Salmon “Tropicana” on an avocado base with a touch of pink pepper','','',16.5,'fi')
+]},
+{id:'pizzas',t:['Pizzas','Pizzas'],fig:['pizza',300,921,'side','r'],items:[
+ I('Focaccia','Focaccia','Pan de pizza, aceite y orégano','Pizza bread, oil and oregano',7,'gl'),
+ I('Margherita','Margherita','Tomate, mozzarella y albahaca','Tomato, mozzarella and basil',9,'gl da'),
+ I('Napoli','Napoli','Tomate, mozzarella, anchoa y orégano','Tomato, mozzarella, anchovy and oregano',10.5,'gl da fi'),
+ I('Jamón','Ham','Tomate, mozzarella y jamón york','Tomato, mozzarella and cooked ham',11,'gl da'),
+ I('Calzone mix','Calzone mix','Tomate, mozzarella, jamón serrano, champiñones, alcachofas y huevo duro','Tomato, mozzarella, serrano ham, mushrooms, artichokes and hard-boiled egg',14,'gl da eg'),
+ I('Pistacchio','Pistacchio','Mozzarella, mortadella bolognese, burrata y granella de pistacho','Mozzarella, Bologna mortadella, burrata and pistachio crumble',13.5,'gl da nu'),
+ I('Pugliese','Pugliese','Mozzarella, cebolla roja, aceitunas negras y burrata','Mozzarella, red onion, black olives and burrata',13.5,'gl da'),
+ I('Gourmet','Gourmet','Mozzarella, salsa de boletus, escamas de parmigiano, rúcula y trufa negra','Mozzarella, boletus sauce, shaved parmigiano, rocket and black truffle',13.5,'gl da'),
+ I('Frutti di mare','Frutti di mare','Tomate, mozzarella, gambas, almejas, mejillones y calamares','Tomato, mozzarella, prawns, clams, mussels and squid',14.5,'gl da fi mo cr'),
+ I('Atún','Tuna','Tomate, mozzarella, atún y cebolla','Tomato, mozzarella, tuna and onion',11.5,'gl da fi'),
+ I('Chorizo','Chorizo','Tomate, mozzarella y chorizo picante','Tomato, mozzarella and spicy chorizo',11.5,'gl da'),
+ I('Tricolore','Tricolore','Cherry, mozzarella, jamón serrano, rúcula y escamas de parmesano','Cherry tomatoes, mozzarella, serrano ham, rocket and shaved parmesan',12.5,'gl da'),
+ I('Ortolana','Ortolana','Cherry, mozzarella, calabacín, berenjena, pimiento y cebolla','Cherry tomatoes, mozzarella, courgette, aubergine, pepper and onion',11.5,'gl da'),
+ I('Hawai','Hawaii','Tomate, mozzarella, bacon y piña','Tomato, mozzarella, bacon and pineapple',11.5,'gl da'),
+ I('Paperina','Paperina','Tomate, mozzarella, patatas y Frankfurt','Tomato, mozzarella, potatoes and frankfurter',10.5,'gl da'),
+ I('Cuatro quesos','Four cheeses','Mozzarella y cuatro quesos','Mozzarella and four cheeses',11.5,'gl da'),
+ I('Calzone blanca','Calzone bianca','Mozzarella y jamón york','Mozzarella and cooked ham',11.5,'gl da'),
+ I('Capricciosa','Capricciosa','Tomate, mozzarella, alcachofas, aceitunas negras, jamón york, champiñones y huevo duro','Tomato, mozzarella, artichokes, black olives, cooked ham, mushrooms and hard-boiled egg',13.5,'gl da eg'),
+ I('Carbonara','Carbonara','Mozzarella, bacon y huevo','Mozzarella, bacon and egg',12,'gl da eg'),
+ I('Barbacoa','Barbecue','Tomate, mozzarella, carne picada y salsa barbacoa','Tomato, mozzarella, minced beef and barbecue sauce',12.5,'gl da'),
+ I('Salmón','Salmon','Mozzarella, salmón ahumado, rúcula y aceite al limón','Mozzarella, smoked salmon, rocket and lemon oil',13,'gl da fi'),
+ I('Rosa dei Venti','Rosa dei Venti','Queso de cabra, cebolla caramelizada, tomate confitado, rúcula, nuez y pesto de albahaca','Goat cheese, caramelised onion, confit tomato, rocket, walnut and basil pesto',14,'gl da nu'),
+ I('Contadina','Contadina','Mozzarella, scamorza ahumada, patata y longaniza','Mozzarella, smoked scamorza, potato and longaniza sausage',13,'gl da')
+]},
+{id:'postres',t:['Postres','Desserts'],fig:['tiramisu',760,469,'wide'],items:[
+ I('Nuestro tiramisú casero','Our homemade tiramisù','','',6.5,'gl da eg'),
+ I('Torrija caramelizada con helado','Caramelised torrija (Spanish-style French toast) with ice cream','','',7,'gl da eg'),
+ I('Tarta de queso horneada “corazón cremoso”','Baked cheesecake with a creamy heart','','',7,'gl da eg'),
+ I('Piña braseada al ron rosa con helado artesano de albahaca','Pineapple roasted in pink rum with artisan basil ice cream','','',6.5,'da'),
+ I('Cúpula de limón de Sorrento con corazón cremoso y glaseado suave','Sorrento lemon dome with a creamy heart and soft glaze','','',6.5,'gl da eg'),
+ I('Mini cannoli “Trinacria” con crumble de pistacho y perlas de chocolate','Mini “Trinacria” cannoli with pistachio crumble and chocolate pearls','','',6.5,'gl da eg nu'),
+ I('Nuestra pinsa con Nutella y lluvia de azúcar glas','Our pinsa with Nutella and a shower of icing sugar','','',10,'gl da nu so'),
+ I('Volcán de chocolate con corazón fundente y helado de vainilla','Chocolate volcano with a molten heart and vanilla ice cream','','',7,'gl da eg so')
+]},
+{id:'bebidas',t:['Bebidas','Drinks'],simple:1,fig:['bebidas',460,490,'side','r'],items:[
+ I('Botella de agua pequeña','Small bottle of water','','',1.8),
+ I('Botella de agua grande','Large bottle of water','','',2.5),
+ I('Refrescos','Soft drinks','','',2.4),
+ I('Caña de cerveza','Draught beer, small','','',2.3),
+ I('Doble de cerveza','Draught beer, large','','',2.6),
+ I('Caña con limón','Small beer with lemon','','',2.4),
+ I('Doble de cerveza con limón','Large beer with lemon','','',2.8),
+ I('Caña 1906','1906 draught beer, small','','',2.5),
+ I('Doble 1906','1906 draught beer, large','','',3),
+ I('Mahou','Mahou','','',2.7),
+ I('Estrella Galicia','Estrella Galicia','','',2.9),
+ I('Estrella Galicia 0,0 tostada','Estrella Galicia 0.0 toasted','','',3),
+ I('Alhambra verde','Alhambra Verde','','',3.5),
+ I('Alhambra roja','Alhambra Roja','','',3.5),
+ I('Sangría litro','Sangria, 1 litre','','',14),
+ I('Grolsch Radler ⅓','Grolsch Radler ⅓','','',2.8),
+ I('Cerveza sin gluten','Gluten-free beer','','',3.5),
+ I('Tinto de verano','Tinto de verano (red wine with soda)','','',4),
+ I('Martini','Martini','','',4.5),
+ I('Café espresso','Espresso','','',1.4),
+ I('Café cortado','Cortado','','',1.6),
+ I('Café con leche','Coffee with milk','','',2),
+ I('Café con hielo','Coffee with ice','','',1.8),
+ I('Infusión','Herbal tea','','',1.5),
+ I('Bombón','Bombón (espresso with condensed milk)','','',2),
+ I('Carajillo quemado','Flambéed carajillo','','',3.5)
+]},
+{id:'licores',t:['Licores','Spirits'],simple:1,fig:['licores',480,546,'side','r'],items:[
+ I('Chupitos','Shots','','',2.5),
+ I('Chupito whisky','Whisky shot','','',3),
+ I('Copas licores','Liqueurs, glass','','',4),
+ I('Terry','Terry','','',3.5),
+ I('Baileys','Baileys','','',4),
+ I('Seagram’s, Beefeater, Puerto de Indias','Seagram’s, Beefeater, Puerto de Indias','','',8),
+ I('Bombay Azul y Tanqueray','Bombay Sapphire and Tanqueray','','',9),
+ I('J&B, Cutty Sark, Negrita, Brugal, Barceló','J&B, Cutty Sark, Negrita, Brugal, Barceló','','',8),
+ I('Martin Miller’s','Martin Miller’s','','',10),
+ I('Vodka Absolut','Absolut vodka','','',7),
+ I('Aperol Spritz','Aperol Spritz','','',6)
+]},
+{id:'vinos',t:['Vinos','Wines'],simple:1,fig:['vino',760,421,'wide'],subs:[
+ {t:['Vino tinto','Red wine'],items:[
+  I('Copa de vino tinto','Glass of red wine','','',3.5),
+  G('D.O. Ribera del Duero','D.O. Ribera del Duero'),
+  I('Trus Roble','Trus Roble','Tempranillo','Tempranillo',19),
+  I('Finca Resalso','Finca Resalso','Tempranillo, 6 meses de barrica','Tempranillo, 6 months in barrel',23),
+  I('Valdeboga','Valdeboga','Roble, 9 meses en barrica','Oak-aged, 9 months in barrel',26),
+  G('D.O. Utiel-Requena','D.O. Utiel-Requena'),
+  I('Bobal Negro','Bobal Negro','Crianza','Crianza (aged)',23),
+  G('D.O.Ca. Rioja','D.O.Ca. Rioja'),
+  I('Viña Eguía','Viña Eguía','Crianza, Tempranillo','Crianza (aged), Tempranillo',16),
+  I('Luis Cañas','Luis Cañas','Crianza, Tempranillo, 12 meses en barrica','Crianza (aged), Tempranillo, 12 months in barrel',25),
+  G('I.G.T. Emilia Romagna','I.G.T. Emilia Romagna'),
+  I('Lambrusco Rosso Fiorello','Lambrusco Rosso Fiorello','','',16),
+  I('Lambrusco Rosado','Lambrusco Rosato','','',16)
+ ]},
+ {t:['Vino blanco','White wine'],items:[
+  I('Copa de vino blanco','Glass of white wine','','',3.5),
+  G('D.O. Rueda','D.O. Rueda'),
+  I('Melior de Matarromera','Melior de Matarromera','100% Verdejo','100% Verdejo',19),
+  I('José Pariente','José Pariente','100% Verdejo','100% Verdejo',22),
+  G('D.O.P. Rías Baixas','D.O.P. Rías Baixas'),
+  I('Paco & Lola','Paco & Lola','100% Albariño','100% Albariño',25),
+  I('Mar de Frades','Mar de Frades','100% Albariño','100% Albariño',29),
+  G('D.O.P. Valdeorras','D.O.P. Valdeorras'),
+  I('Maruxa','Maruxa','Godello 100% sobre lías','100% Godello, aged on lees',23),
+  G('D.O.P. Utiel-Requena','D.O.P. Utiel-Requena'),
+  I('Bobal Blanco','Bobal Blanco','Bobal','Bobal',23)
+ ]}
+]}
+];
+
+/* ========= CÓDIGO ========= */
+var lang='es',$=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function price(p){var f=p.toFixed(2);return lang==='es'?f.replace('.',','):f}
+function ico(k,cls){var n=AL[k][lang==='es'?0:1];return '<svg class="'+cls+'" role="img" aria-label="'+n+'"><title>'+n+'</title><use href="#a-'+k+'"/></svg>'}
+function item(it,simple){
+  if(it.grp)return '<li><h4 class="grp">'+esc(it.grp[L()])+'</h4></li>';
+  var h='<li class="it"><div class="tx"><span class="nm">'+esc(it.n[L()])+'</span>';
+  if(it.d){var t=it.d[L()];h+= simple?'<span class="ds"> · '+esc(t)+'</span>':'<p class="ds">'+esc(t)+'</p>'}
+  if(it.opt)it.opt.forEach(function(o){h+='<p class="opt">'+esc(o[L()])+' · '+price(o[2])+'</p>'});
+  if(it.a.length)h+='<div class="als">'+it.a.map(function(k){return ico(k,'al')}).join('')+'</div>';
+  if(it.tbc)h+='<div class="tbc">'+UI[lang].tbc+'</div>';
+  return h+'</div><span class="pr">'+price(it.p)+'</span></li>'
+}
+function L(){return lang==='es'?0:1}
+function list(items,simple){return '<ul class="items">'+items.map(function(i){return item(i,simple)}).join('')+'</ul>'}
+function render(){
+  var h='',c='';
+  S.forEach(function(s){
+    var f=s.fig,side=f[3]==='side',fig='<figure class="'+f[3]+'"><img src="img/'+f[0]+'.webp" width="'+f[1]+'" height="'+f[2]+'" alt="" loading="lazy" decoding="async"></figure>';
+    var body=s.subs?s.subs.map(function(b){return '<h3 class="sub">'+esc(b.t[L()])+'</h3>'+list(b.items,s.simple)}).join(''):list(s.items,s.simple);
+    h+='<section class="sec'+(s.simple?' simple':'')+'" id="'+s.id+'"><h2 class="band"><svg aria-hidden="true"><use href="#star"/></svg>'+esc(s.t[L()])+'</h2>'
+      +(s.note?'<p class="note">'+esc(s.note[L()])+'</p>':'')
+      +'<div class="body'+(side?' side '+f[4]:'')+'"><div class="list">'+body+'</div>'+fig+'</div></section>';
+    c+='<button type="button" data-go="'+s.id+'">'+esc(s.t[L()])+'</button>'
+  });
+  $('menu').innerHTML=h;$('cats').innerHTML=c;$('cats').setAttribute('aria-label',UI[lang].cats);
+  $('h1').textContent=UI[lang].h1;
+  $('alh').textContent=UI[lang].alh;$('alp').textContent=UI[lang].alp;
+  $('lg').innerHTML=Object.keys(AL).map(function(k){return '<li>'+ico(k,'al')+'<span>'+AL[k][L()]+'</span></li>'}).join('');
+  document.querySelectorAll('[data-t="back"]').forEach(function(e){e.textContent=UI[lang].back});
+  if(SPECIALS.length){$('specials-wrap').hidden=false;$('specials').innerHTML='<h2>'+UI[lang].spec+'</h2>'+list(SPECIALS)}
+  $('l-es').setAttribute('aria-pressed',lang==='es');$('l-en').setAttribute('aria-pressed',lang==='en');
+  document.documentElement.lang=lang;
+  spy()
+}
+function setLang(l,keep){
+  lang=l;try{localStorage.setItem('carta-lang',l)}catch(e){}
+  try{history.replaceState(null,'','#'+l)}catch(e){}
+  var y=window.scrollY;render();if(keep)window.scrollTo(0,y)
+}
+$('l-es').onclick=function(){setLang('es',1)};
+$('l-en').onclick=function(){setLang('en',1)};
+$('cats').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var s=$(b.getAttribute('data-go'));if(!s)return;
+  var off=(document.querySelector('.top').offsetHeight||110)+8;
+  var y=Math.max(0,s.getBoundingClientRect().top+window.pageYOffset-off);
+  try{window.scrollTo(0,y)}catch(x){}
+  setTimeout(function(){
+    if(Math.abs(window.pageYOffset-y)>6){try{s.scrollIntoView(true)}catch(x){}}
+    var y2=Math.max(0,s.getBoundingClientRect().top+window.pageYOffset-off);
+    if(Math.abs(window.pageYOffset-y2)>6)try{window.scrollTo(0,y2)}catch(x){}
+  },120);
+  document.querySelectorAll('#cats button').forEach(function(c){if(c===b)c.setAttribute('aria-current','true');else c.removeAttribute('aria-current')})
+});
+var io=null;
+function spy(){
+  if(io)io.disconnect();
+  if(!('IntersectionObserver' in window))return;
+  io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        document.querySelectorAll('#cats button').forEach(function(b){
+          var on=b.getAttribute('data-go')===e.target.id;
+          if(on){b.setAttribute('aria-current','true');var r=b.getBoundingClientRect(),n=$('cats').getBoundingClientRect();
+            if(r.left<n.left+8||r.right>n.right-8)$('cats').scrollTo({left:b.offsetLeft-24,behavior:'smooth'})}
+          else b.removeAttribute('aria-current')
+        })
+      }
+    })
+  },{rootMargin:'-130px 0px -65% 0px'});
+  document.querySelectorAll('.sec').forEach(function(s){io.observe(s)})
+}
+(function(){
+  var h=(location.hash||'').replace('#',''),l=null;
+  if(h==='es'||h==='en')l=h;
+  if(!l){try{l=localStorage.getItem('carta-lang')}catch(e){}}
+  if(l!=='es'&&l!=='en'){var n=(navigator.language||'es').slice(0,2).toLowerCase();l=(n==='es'||n==='ca'||n==='it')?'es':'en'}
+  lang=l;render()
+})();
+addEventListener('hashchange',function(){var h=location.hash.replace('#','');if((h==='es'||h==='en')&&h!==lang){lang=h;render()}});
+</script>
+
+</body></html>

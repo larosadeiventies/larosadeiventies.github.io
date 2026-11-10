@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<meta charset="utf-8">
+<title>La Rosa dei Venti</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<style>
+/* Layout: cabecera centrada, hero a sangre con fotos que rotan, dos frases enormes, mosaico de fotos, sedes en banda azul, carta en filas grandes. Las fotos van en cada hueco; mientras tanto, láminas de línea propias. */
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --sky:#DCEEF8;
+  --surface:#FFFFFF;
+  --ink:#0B2238;
+  --muted:#4A6178;
+  --line:#D3DCE5;
+  --sea:#0A437C;
+  --ember:#C8471E;
+  --ember-ink:#FFFFFF;
+  --band:#0A437C;
+  --band-ink:#F2F5F8;
+  --band-soft:#BCD3EA;
+  --band-card:#0E4F94;
+  --band-line:#3C72AB;
+  --f-display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--band)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+p{margin:0}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+h2{font-size:clamp(2rem,3.6vw,3rem);line-height:1.08}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:2px;border:1.5px solid transparent;font:600 .95rem/1 var(--f-body);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--ember) linear-gradient(180deg,#D9592E 0%,#C8471E 55%,#B33C16 100%);color:var(--ember-ink)}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-line{border-color:currentColor;background:transparent;color:inherit}
+
+/* Cabecera */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--band);color:var(--band-ink);border-bottom:1px solid var(--band-line)}
+.top .wrap{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding-block:14px}
+.left{position:relative;justify-self:end;display:flex;align-items:center;gap:12px}
+.burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:0 12px;border:1.5px solid var(--band-line);border-radius:2px;background:transparent;cursor:pointer;transition:border-color .15s ease}
+.burger:hover{border-color:#F2A65A}
+.burger span{display:block;height:2px;background:var(--band-ink);transition:transform .2s ease,opacity .2s ease}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.menu-pop{position:absolute;right:0;top:calc(100% + 12px);width:min(310px,calc(100vw - 32px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:6px 0;box-shadow:0 18px 40px -18px rgba(5,20,35,.45);display:grid}
+.menu-pop[hidden]{display:none}
+.menu-pop>a{padding:15px 22px;text-decoration:none;font:400 1.4rem/1 var(--f-display);border-top:1px solid var(--line)}
+.menu-pop>a:first-child{border-top:0}
+.menu-pop>a:hover{color:var(--ember)}
+.menu-res{display:grid;gap:2px;padding:18px 22px 12px;margin-top:6px;border-top:1px solid var(--ink)}
+.menu-title{font:400 1.4rem/1 var(--f-display);color:var(--ember)}
+.menu-res .mono{margin:6px 0 8px}
+.menu-res a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;text-decoration:none}
+.menu-res a span{font:400 1.15rem/1 var(--f-display)}
+.menu-res a b{font:500 1.05rem/1 var(--f-mono);color:var(--ember)}
+.menu-res a:hover b{text-decoration:underline}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:400 1.45rem/1 var(--f-display);white-space:nowrap}
+.logo-rose{width:32px;height:32px;flex:none}
+.logo-rose .ring{fill:none;stroke:var(--band-ink);stroke-width:5}
+.logo-rose .tick{stroke:var(--band-ink);stroke-width:4}
+.logo-rose .pa{fill:var(--band-ink)}
+.logo-rose .pb{fill:var(--band-ink);opacity:.5}
+.logo-rose .north .pa,.logo-rose .north .pb{fill:#F2A65A}
+
+/* Hero con fotos */
+.hero{position:relative;height:clamp(460px,46vw,660px);overflow:hidden;background:var(--band)}
+.slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1}
+.slide-light::after{display:none}
+.hero.light .dot{background:rgba(11,34,56,.28)}
+.hero.light .dot[aria-current="true"]{background:var(--sea)}
+.slide::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(to top,rgba(4,16,28,.62),transparent);pointer-events:none}
+.slide img.photo{display:block;width:100%;height:100%;object-fit:cover}
+.hero-cta{position:absolute;left:0;right:0;bottom:40px;z-index:4;display:flex;justify-content:center;pointer-events:none}
+.hero-cta .btn{pointer-events:auto;padding:15px 32px;font-size:1rem;box-shadow:0 10px 26px -10px rgba(5,20,35,.55)}
+.hero-ui{position:absolute;inset:auto 0 0;z-index:3;padding-bottom:22px}
+.hero-ui .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.hero-cap{color:#fff;font:400 clamp(1.3rem,2.4vw,2rem)/1.1 var(--f-display);min-height:1.1em}
+.dots{display:flex;gap:10px}
+.dot{width:34px;height:4px;border:0;padding:0;background:rgba(255,255,255,.45);cursor:pointer}
+.dot[aria-current="true"]{background:#fff}
+
+/* Láminas de línea (hasta tener fotos) */
+.tone-1{--a-bg:#0A437C;--a-fg:#EAF1F8;--a-acc:#F2A65A}
+.tone-2{--a-bg:#C8471E;--a-fg:#FBEFE6;--a-acc:#FFD28A}
+.tone-3{--a-bg:#BCD7EC;--a-fg:#0A437C;--a-acc:#C8471E}
+.tone-4{--a-bg:#0B2238;--a-fg:#BCD3EA;--a-acc:#F07A4A}
+.tone-5{--a-bg:#2E6DA4;--a-fg:#F2F5F8;--a-acc:#FFD28A}
+.art{display:block;width:100%;height:100%;background:var(--a-bg)}
+.art .s{fill:none;stroke:var(--a-fg);stroke-width:2;vector-effect:non-scaling-stroke}
+.art .sa{fill:none;stroke:var(--a-acc);stroke-width:2;vector-effect:non-scaling-stroke}
+.art .fa{fill:var(--a-acc);stroke:none}
+.art .ff{fill:var(--a-fg);stroke:none}
+.art .ring{fill:none;stroke:var(--a-fg);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.art .tick{stroke:var(--a-fg);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.art .pa{fill:var(--a-fg)}
+.art .pb{fill:var(--a-fg);opacity:.5}
+.art .north .pa{fill:var(--a-acc)}
+.art .north .pb{fill:var(--a-acc);opacity:.6}
+.art .lbl{fill:var(--a-fg);font:500 9px var(--f-mono);text-anchor:middle;dominant-baseline:middle}
+
+/* Frases grandes */
+.statement{padding-block:88px}
+.big{font:400 clamp(1.9rem,4.5vw,3.9rem)/1.12 var(--f-display);text-wrap:balance;max-width:19em}
+.big em{font-style:normal;color:var(--ember)}
+.lead-line{font:500 20px/1.5 var(--f-body);letter-spacing:.01em;text-wrap:balance}
+.intro{background:var(--band);color:var(--band-ink);padding-block:38px;text-align:center}
+.intro .lead-line{margin:0 auto;color:var(--band-ink)}
+.big.right{margin-left:auto}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.big.long{font-size:clamp(1.4rem,2.4vw,2.15rem);line-height:1.3;max-width:30em}
+.wave{display:block;width:100%;height:60px;margin-block:44px}
+.wave path{fill:none;stroke:var(--sea);stroke-width:1.5;vector-effect:non-scaling-stroke}
+
+/* Mosaico */
+.gallery{padding-block:96px;background:var(--band);color:var(--band-ink)}
+.gallery .mono{color:var(--band-soft)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;margin-bottom:36px}
+.sec-head h2{margin-top:10px}
+.sec-head a{font-weight:600;font-size:.95rem}
+.gallery{overflow-x:clip}
+.gal{--h:clamp(300px,34vw,480px)}
+.gal-view{overflow:hidden;margin-inline:calc(50% - 50vw);padding-block:6px;touch-action:pan-y}
+.gal-track{display:flex;align-items:center;gap:28px;will-change:transform;transition:transform .7s cubic-bezier(.22,.7,.2,1)}
+.gal-slide{flex:0 0 auto;margin:0;width:min(calc(var(--h) * var(--r)),84vw);aspect-ratio:var(--r);border-radius:3px;overflow:hidden;background:var(--line);transform:scale(.84);opacity:.45;transition:transform .7s cubic-bezier(.22,.7,.2,1),opacity .5s ease;cursor:pointer;box-shadow:0 22px 44px -26px rgba(2,12,28,.7)}
+.gal-slide.on{transform:scale(1);opacity:1;cursor:default}
+.gal-slide img{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.gal-bar{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:26px}
+.gal-info{min-width:min(320px,52vw);text-align:center}
+.gal-cap{display:block;font:400 1.35rem/1.25 var(--f-display)}
+.gal-count{display:block;margin-top:6px;color:var(--band-soft)}
+.gal-arrow{width:48px;height:48px;border-radius:50%;border:1px solid var(--band-line);background:transparent;color:#fff;font:400 1.15rem/1 var(--f-body);cursor:pointer;flex:0 0 auto;transition:background .2s,border-color .2s}
+.gal-arrow:hover{background:var(--ember);border-color:var(--ember)}
+.tile figcaption b{font:400 1.15rem/1.2 var(--f-display)}
+
+/* Bordes de ola entre secciones (celeste y blanco alternados) */
+.gallery,.menu,.band,.reviews,.foot,.statement{position:relative;--wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 30' preserveAspectRatio='none'%3E%3Cpath d='M0 30V14C20 4 40 4 60 14S100 24 120 14V30Z'/%3E%3C/svg%3E")}
+.gallery::before,.menu::before,.band::before,.reviews::before,.foot::before,.statement::before{content:"";position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:30px;pointer-events:none;-webkit-mask-image:var(--wave);-webkit-mask-repeat:repeat-x;-webkit-mask-position:left bottom;-webkit-mask-size:120px 30px;mask-image:var(--wave);mask-repeat:repeat-x;mask-position:left bottom;mask-size:120px 30px}
+.gallery::before{background:var(--band)}
+.menu::before,.statement::before,.reviews::before{background:var(--bg)}
+.band::before,.foot::before{background:var(--band)}
+
+/* Carta */
+.menu{padding-block:96px}
+.menu-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.menu-grid>*{min-width:0}
+.menu-grid h2{margin:10px 0 18px}
+.menu-grid .sub{color:var(--muted);max-width:26em}
+.menu-list{border-top:1px solid var(--ink)}
+.menu-item{border-bottom:1px solid var(--line);padding-bottom:8px}
+.menu-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:30px 4px 16px;text-decoration:none}
+.flag{display:inline-block;flex:none;height:18px;box-shadow:0 0 0 1px rgba(11,34,56,.22)}
+.flag-es{width:27px}
+.flag-uk{width:36px}
+.menu-row strong .flag{margin-left:14px;vertical-align:.05em}
+.menu-row strong .flag+.flag{margin-left:8px}
+.menu-en-btn{display:inline-flex;align-items:center;gap:10px;margin-left:4px;padding:8px 14px;border:1px solid var(--line);border-radius:2px;text-decoration:none;font:600 .85rem/1 var(--f-body);letter-spacing:.02em;transition:border-color .15s ease,color .15s ease}
+.menu-en-btn:hover{border-color:var(--ember);color:var(--ember)}
+.menu-en-btn .flag{height:14px}
+.menu-en-btn .flag-uk{width:28px}
+.menu-row strong{display:block;font:400 clamp(1.6rem,2.8vw,2.3rem)/1.1 var(--f-display)}
+.menu-row small{display:block;margin-top:6px;color:var(--muted);font-size:.92rem}
+.menu-row .arrow{font-size:1.8rem;color:var(--ember);transition:transform .15s ease}
+.menu-row:hover .arrow{transform:translateX(6px)}
+.menu-row:hover strong{color:var(--ember)}
+.menu-en{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.menu-en a{font-weight:600;font-size:.95rem}
+
+/* Sedes */
+.band{background:var(--band);color:var(--band-ink);padding-block:96px}
+.band .mono{color:var(--band-soft)}
+.band .sec-head p{max-width:24em;color:var(--band-soft)}
+.sedes{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sede{background:var(--band-card);border:1px solid var(--band-line);border-radius:2px;padding:36px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.sede h3{font-size:clamp(2rem,3.2vw,2.7rem);line-height:1.05}
+.sede address{font-style:normal;color:var(--band-soft)}
+.status{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.95rem}
+.sdot{width:10px;height:10px;border-radius:50%;background:var(--band-soft)}
+.status.open .sdot{background:#5BC48A}
+.status.closed .sdot{background:#F08C7A}
+.phone-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.phone{font:500 1.55rem/1 var(--f-mono);letter-spacing:.02em;text-decoration:none}
+.phone:hover{text-decoration:underline}
+.copy{font:600 .82rem/1 var(--f-body);padding:9px 13px;border-radius:2px;border:1px solid var(--band-line);background:transparent;color:inherit;cursor:pointer}
+.copy:hover{background:var(--band-line)}
+.hours-line{display:grid;gap:12px;padding-top:18px;border-top:1px solid var(--band-line)}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.slots p{display:grid;gap:6px}
+.slots span{color:var(--band-soft);font-size:.9rem}
+.slots b{font:500 1.15rem/1 var(--f-mono);letter-spacing:.01em}
+.ig{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:.95rem}
+.ig:hover{text-decoration:underline}
+.ig-ico{width:20px;height:20px;flex:none}
+.sede .ig{align-self:flex-start}
+.foot .ig{margin-top:10px}
+.sede-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:4px}
+.band .btn-line{color:var(--band-ink)}
+
+/* Opiniones */
+.reviews{padding-block:96px}
+.reviews h2{margin:10px 0 36px}
+.rev-block{margin-top:44px}
+.rev-block:first-of-type{margin-top:0}
+.rev-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.rev-head h3{margin:0;font:400 1.6rem/1.2 var(--f-display)}
+.rev-nav{display:flex;gap:8px}
+.rev-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:50%;font:400 1.1rem/1 var(--f-body);cursor:pointer}
+.rev-btn:hover{border-color:var(--ember);color:var(--ember)}
+.rev-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none}
+.rev-row::-webkit-scrollbar{display:none}
+.rev-row .rev{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;padding:28px;display:flex;flex-direction:column}
+.rev-row .rev blockquote{font-size:1.12rem;line-height:1.45;flex:1}
+.stars{color:#E8A317;letter-spacing:3px;font-size:1.05rem;margin-bottom:14px}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.rev{margin:0;padding:36px;background:var(--surface);border:1px solid var(--line);border-radius:2px;min-width:0}
+.rev blockquote{margin:0;font:400 clamp(1.25rem,1.9vw,1.55rem)/1.38 var(--f-display)}
+.rev figcaption{margin-top:22px}
+
+/* Pie */
+.foot{background:var(--band);color:var(--band-ink);padding-block:64px 28px}
+.foot .mono{color:var(--band-soft)}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:36px}
+.foot-grid>div{min-width:0}
+.foot h4{margin:0 0 12px;font:500 .76rem/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--band-soft)}
+.foot p,.foot a{font-size:.95rem}
+.foot p{color:var(--band-soft)}
+.foot a{color:var(--band-ink)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot-word{margin-top:56px;font:400 clamp(2.2rem,9.2vw,8.4rem)/.95 var(--f-display);color:var(--band-soft);opacity:.55;white-space:nowrap;letter-spacing:-.01em;max-width:100%;overflow:hidden}
+.foot-base{margin-top:26px;padding-top:18px;border-top:1px solid var(--band-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+@media (max-width:980px){
+  .rev-row .rev{flex-basis:calc((100% - 20px)/2)}
+  .brand{font-size:1.2rem}
+  .menu-grid{grid-template-columns:1fr;gap:36px}
+  .sedes,.rev-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .statement{padding-block:56px 48px}
+  .gallery,.menu,.band,.reviews{padding-block:64px}
+  .rev-row{margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px;gap:14px}
+  .rev-row .rev{flex-basis:84%}
+  .rev-nav{display:none}
+  .sede{padding:24px}
+  .phone{font-size:1.3rem}
+  .gal{--h:min(78vw,340px)}
+  .gal-track{gap:16px}
+  .gal-bar{gap:14px;margin-top:20px}
+  .gal-arrow{width:42px;height:42px}
+  .dot{width:22px}
+  .hero-cta{bottom:36px}
+  .hero-cap{display:none}
+  .hero-ui .wrap{justify-content:center}
+  .hero-cta .btn{padding:12px 22px;font-size:.92rem}
+  .top .wrap{gap:10px}
+  .left{gap:8px}
+  .brand{font-size:.95rem;gap:8px}
+  .logo-rose{width:24px;height:24px}
+  .top .btn{padding:10px 12px;font-size:.88rem}
+  .burger{width:40px;height:40px;padding:0 10px}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .slide,.btn,.menu-row .arrow{transition:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="flag-es" viewBox="0 0 60 40"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></symbol>
+    <symbol id="flag-uk" viewBox="0 0 60 30">
+      <clipPath id="ukclip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukclip)" stroke="#C8102E" stroke-width="4"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+    </symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.3" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="La Rosa dei Venti, inicio">
+      <svg class="logo-rose" id="logo-rose" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+      La Rosa dei Venti
+    </a>
+    <div class="left">
+    <a class="btn btn-primary" href="#carta">Carta</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu-pop" aria-label="Menú"><span></span><span></span><span></span></button>
+    <nav class="menu-pop" id="menu-pop" aria-label="Principal" hidden>
+      <a href="#galeria">Galería</a>
+      <a href="#sedes">Sedes</a>
+      <a href="#opiniones">Opiniones</a>
+      <div class="menu-res">
+        <p class="menu-title">Reservar</p>
+        <p class="mono">Solo por teléfono</p>
+        <a href="tel:+34964588693"><span>Moncofa</span><b>964 588 693</b></a>
+        <a href="tel:+34964301910"><span>Benicàssim</span><b>964 301 910</b></a>
+      </div>
+    </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-roledescription="carrusel" aria-label="La Rosa dei Venti en imágenes">
+    <figure class="slide on slide-light" data-cap="La Rosa dei Venti" data-nocap data-light><img class="photo" fetchpriority="high" decoding="async" srcset="img/logo-hero-sm.jpg 1200w, img/logo-hero.jpg 2400w" sizes="100vw" src="img/logo-hero.jpg" alt="Logotipo de La Rosa dei Venti, Moncofa y Benicàssim, con una rosa de los vientos y el mar" width="2400" height="1100"></figure>
+    <figure class="slide" data-cap="Frente al mar"><img class="photo" decoding="async" data-srcset="img/frente-mar-sm.jpg 1200w, img/frente-mar.jpg 2400w" sizes="100vw" data-src="img/frente-mar.jpg" alt="Terraza con las mesas puestas frente al mar y las palmeras" width="1408" height="768" style="object-position:50% 60%"></figure>
+    <figure class="slide" data-cap="Un bocado de Italia"><img class="photo" decoding="async" data-srcset="img/hero-espaguetis-sm.jpg 1200w, img/hero-espaguetis.jpg 2400w" sizes="100vw" data-src="img/hero-espaguetis.jpg" alt="Espaguetis cremosos con queso rallado y panceta crujiente, con una pizza al fondo" width="2400" height="1100" style="object-position:50% 35%"></figure>
+    <figure class="slide" data-cap="Pizza Pistacho"><img class="photo" decoding="async" data-srcset="img/hero-pizza-sm.jpg 1200w, img/hero-pizza.jpg 2400w" sizes="100vw" data-src="img/hero-pizza.jpg" alt="Pizza Pistacho con mortadela, burrata y pistacho" width="2400" height="1100"></figure>    <div class="hero-cta"><a class="btn btn-primary" href="#carta">Ver la carta</a></div>
+    <div class="hero-ui">
+      <div class="wrap">
+        <p class="hero-cap" id="hero-cap" aria-live="polite"></p>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <h1 class="lead-line">El auténtico sabor de Italia, frente al mar</h1>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <p class="big right long">Unimos la tradición de las recetas de siempre con una constante experimentación en la cocina. Estudiamos cada día nuevos sabores y <em>platos fuera de carta</em> para regalaros una experiencia distinta cada vez, con toda la calidad del producto fresco.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="galeria">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="mono">Galería</p>
+          <h2>La cocina y el mar</h2>
+        </div>
+      </div>
+      <div class="gal" aria-roledescription="carrusel" aria-label="Galería de fotos">
+        <div class="gal-view">
+          <div class="gal-track">
+          <figure class="gal-slide" data-cap="Pinsa romana, ligera y crujiente" style="--r:1.3511"><img data-src="img/pizza-mortadela.jpg" alt="Pinsa romana con mortadela y hojas verdes sobre una tabla de madera" width="1189" height="880" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Noches de verano" style="--r:0.9474"><img data-src="img/noches.jpg" alt="La terraza llena de mesas al atardecer, con luces y flores bajo el toldo azul y blanco" width="909" height="960" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Recetas de siempre" style="--r:0.8168"><img data-src="img/tagliatelle.jpg" alt="Plato de tagliatelle con salsa de tomate y albahaca, con la terraza y el mar al fondo" width="784" height="960" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Un brindis frente al mar" style="--r:0.7433"><img data-src="img/atardecer.jpg" alt="Atardecer frente al mar visto desde la terraza, con una cerveza, un vaso con limón y patatas" width="714" height="960" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Pasta artesanal" style="--r:1.3325"><img data-src="img/pasta.jpg" alt="Gnocchi con almejas y, al lado, un plato de pasta cremosa con romero" width="1066" height="800" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Dos casas" style="--r:1.3315"><img data-src="img/brisa.jpg" alt="Las playas de Benicàssim y Moncofa, una junto a la otra" width="1193" height="896" decoding="async"></figure>
+          <figure class="gal-slide" data-cap="Despensa italiana" style="--r:1.8333"><img data-src="img/excelencias.jpg" alt="Cesta de mimbre con parmigiano, panceta, pasta, conserva de tomate, burrata y albahaca sobre una mesa de madera" width="1408" height="768" decoding="async"></figure>
+          </div>
+        </div>
+        <div class="gal-bar">
+          <button type="button" class="gal-arrow gal-prev" aria-label="Foto anterior">←</button>
+          <div class="gal-info"><b class="gal-cap"></b><span class="mono gal-count"></span></div>
+          <button type="button" class="gal-arrow gal-next" aria-label="Foto siguiente">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="carta">
+    <div class="wrap menu-grid">
+      <div>
+        <p class="mono">La carta</p>
+        <h2>Elige tu casa y mira la carta</h2>
+        <p class="sub">Cada local tiene su propia carta, con pasta fresca, pizzas artesanas y platos del Mediterráneo.</p>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item">
+          <a class="menu-row" href="carta-moncofa/">
+            <span><strong>Carta de Moncofa<svg class="flag flag-es" role="img" aria-label="Español"><use href="#flag-es"/></svg><svg class="flag flag-uk" role="img" aria-label="English"><use href="#flag-uk"/></svg></strong><small>Avinguda de la Mare Nostrum, 47</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-row" href="carta-benicassim/">
+            <span><strong>Carta de Benicàssim<svg class="flag flag-es" role="img" aria-label="Español"><use href="#flag-es"/></svg><svg class="flag flag-uk" role="img" aria-label="English"><use href="#flag-uk"/></svg></strong><small>Avenida Ferrandis Salvador, 124</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="sedes">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="mono">Dónde encontrarnos</p>
+          <h2>Dos casas, una misma cocina</h2>
+        </div>
+        <p>Reservas solo por teléfono. Llama a la casa que prefieras.</p>
+      </div>
+      <div class="sedes">
+        <article class="sede">
+          <p class="mono">39°47′40″N · 0°08′04″O</p>
+          <h3>Moncofa</h3>
+          <address>Avinguda de la Mare Nostrum, 47<br>12593 Moncofa (Castellón)</address>
+          <span class="status" data-status><span class="sdot"></span><span data-status-text>Comprobando horario…</span></span>
+          <div class="phone-row">
+            <a class="phone" href="tel:+34964588693" data-phone>964 588 693</a>
+            <button class="copy" type="button" data-copy>Copiar número</button>
+          </div>
+          <a class="ig" href="https://www.instagram.com/larosadeiventimoncofar" target="_blank" rel="noopener" aria-label="Instagram de La Rosa dei Venti Moncofa"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>@larosadeiventimoncofar</a>
+          <div class="hours-line">
+            <p class="mono">Todos los días</p>
+            <div class="slots">
+              <p><span>Comidas</span><b>11:00–16:00</b></p>
+              <p><span>Cenas</span><b>19:00–00:00</b></p>
+            </div>
+          </div>
+          <div class="sede-cta">
+            <a class="btn btn-primary" href="tel:+34964588693">Llamar para reservar</a>
+            <a class="btn btn-line" href="https://www.google.com/maps/place/La+Rosa+Dei+Venti/@39.7945701,-0.1344899,17z/data=!4m15!1m8!3m7!1s0xd601a95c108bdf1:0x975cbbe099c5fe82!2sAv.+Mare+Nostrum,+47,+12593+El+Grau+de+Moncofa,+Castell%C3%B3!3b1!8m2!3d39.7945701!4d-0.1344899!16s%2Fg%2F11c1423_80!3m5!1s0xd601a95c728e1b5:0x3e72ec8ebde92ba5!8m2!3d39.7944608!4d-0.1345192!16s%2Fg%2F11cnch93sw?entry=ttu" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
+        </article>
+
+        <article class="sede">
+          <p class="mono">40°02′21″N · 0°03′13″E</p>
+          <h3>Benicàssim</h3>
+          <address>Avenida Ferrandis Salvador, 124<br>12560 Benicàssim (Castellón)</address>
+          <span class="status" data-status><span class="sdot"></span><span data-status-text>Comprobando horario…</span></span>
+          <div class="phone-row">
+            <a class="phone" href="tel:+34964301910" data-phone>964 301 910</a>
+            <button class="copy" type="button" data-copy>Copiar número</button>
+          </div>
+          <a class="ig" href="https://www.instagram.com/larosadeiventi_bnc" target="_blank" rel="noopener" aria-label="Instagram de La Rosa dei Venti Benicàssim"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>@larosadeiventi_bnc</a>
+          <div class="hours-line">
+            <p class="mono">Todos los días</p>
+            <div class="slots">
+              <p><span>Comidas</span><b>11:00–16:00</b></p>
+              <p><span>Cenas</span><b>19:00–00:00</b></p>
+            </div>
+          </div>
+          <div class="sede-cta">
+            <a class="btn btn-primary" href="tel:+34964301910">Llamar para reservar</a>
+            <a class="btn btn-line" href="https://www.google.com/maps/place/La+Rosa+de+los+Vientos/@40.0391613,0.05092,17z/data=!3m1!4b1!4m6!3m5!1s0x12a0015601de1265:0xbcb39e976922280e!8m2!3d40.0391613!4d0.0534949!16s%2Fg%2F11jnpn_xmr?entry=ttu" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="opiniones">
+    <div class="wrap">
+      <p class="mono">Opiniones</p>
+      <h2>La experiencia de nuestros comensales</h2>
+      <div class="rev-block">
+        <div class="rev-head"><h3>Moncofa</h3><div class="rev-nav"><button type="button" class="rev-btn" data-dir="-1" aria-label="Anteriores">←</button><button type="button" class="rev-btn" data-dir="1" aria-label="Siguientes">→</button></div></div>
+        <div class="rev-row" tabindex="0" aria-label="Opiniones de Moncofa">
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“El mejor restaurante italiano de toda la zona. La pasta con trufa es de otro planeta y las vistas al mar hacen que la cena sea mágica.”</blockquote><figcaption class="mono">Carlos G.</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“Excelente atención, la comida deliciosa, lo súper recomiendo… volveré 🥰”</blockquote><figcaption class="mono">Gisella Mosquera</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“¡¡Magnífico!! Totalmente recomendable. Fina es encantadora y el servicio es de primera. ¡Ah! La comida sensacional, todo muy bien preparado, presentado y elaborado… ¡¡un descubrimiento!! ¡Muchas gracias!”</blockquote><figcaption class="mono">Inmaculada Sánchez-Lafuente</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote lang="en">“Staple of Moncofa. Nothing else to say. Everything is always good, fresh, tasty. Can't miss this place if you're in this town!”</blockquote><figcaption class="mono">Bato Q</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“Muy buen sitio para comer o cenar próximo a la playa, con camareros atentos y rápidos. Solemos ir a menudo ya que su carta es bastante variada. Calidad-precio excelente. Recomendaría reservar sobre todo en verano.”</blockquote><figcaption class="mono">Juanfra Ruis</figcaption></figure>
+        </div>
+      </div>
+      <div class="rev-block">
+        <div class="rev-head"><h3>Benicàssim</h3><div class="rev-nav"><button type="button" class="rev-btn" data-dir="-1" aria-label="Anteriores">←</button><button type="button" class="rev-btn" data-dir="1" aria-label="Siguientes">→</button></div></div>
+        <div class="rev-row" tabindex="0" aria-label="Opiniones de Benicàssim">
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“Un descubrimiento en Benicàssim. Un trato profesional y cercano, la comida es casera de verdad. Se nota el cariño en cada plato.”</blockquote><figcaption class="mono">Lucía M.</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“Un restaurante increíble. De 10: comida con variedad y de calidad. Trato al cliente con una sonrisa y atentos en todo momento.”</blockquote><figcaption class="mono">Leticia Castroviejo Calvo</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“Un sitio estupendo. Pedimos dos pizzas que estaban muy ricas, sabrosas y nada pesadas. El tiramisú casero estaba riquísimo. El servicio muy atento. A la hora de pagar salió el dueño y estuvo hablando con nosotros un buen rato, haciéndonos sentir como en casa 👌🏻”</blockquote><figcaption class="mono">Silvia Martínez Sierra</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“¡Una experiencia maravillosa! La comida estaba excelente y el servicio fue excepcional. Todo el personal fue muy amable, atento y nos hizo sentir muy bienvenidos. Estamos visitando la zona y nos alegramos muchísimo de haber elegido este restaurante. Comida deliciosa, excelente servicio y un ambiente estupendo. ¡Totalmente recomendable!”</blockquote><figcaption class="mono">Charlene Montoya</figcaption></figure>
+          <figure class="rev"><div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><blockquote>“¡Qué descubrimiento de lugar! Pasta riquísima y el entrecot. Sin duda volveremos. Recomiendo la pasta carbonara, estaba increíble, y el tiramisú.”</blockquote><figcaption class="mono">Andrea Victoria</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>La Rosa dei Venti</h4>
+        <p>Restaurante y pizzería italiana frente al mar.</p>
+      </div>
+      <div>
+        <h4>Moncofa</h4>
+        <p>Avinguda de la Mare Nostrum, 47<br>12593 Moncofa<br>964 588 693</p>
+        <p>Todos los días<br>11:00–16:00 · 19:00–00:00</p>
+        <a class="ig" href="https://www.instagram.com/larosadeiventimoncofar" target="_blank" rel="noopener" aria-label="Instagram de La Rosa dei Venti Moncofa"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>@larosadeiventimoncofar</a>
+      </div>
+      <div>
+        <h4>Benicàssim</h4>
+        <p>Avenida Ferrandis Salvador, 124<br>12560 Benicàssim<br>964 301 910</p>
+        <p>Todos los días<br>11:00–16:00 · 19:00–00:00</p>
+        <a class="ig" href="https://www.instagram.com/larosadeiventi_bnc" target="_blank" rel="noopener" aria-label="Instagram de La Rosa dei Venti Benicàssim"><svg class="ig-ico" aria-hidden="true"><use href="#ig"/></svg>@larosadeiventi_bnc</a>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#carta">Carta</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-word" aria-hidden="true">La Rosa dei Venti</div>
+    <div class="foot-base mono">
+      <span>© 2026 La Rosa dei Venti</span>
+      <span>Reservas solo por teléfono</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- Dibujo ---------- */
+  function P(a,r){var t=a*Math.PI/180;return [+(r*Math.sin(t)).toFixed(2),+(-r*Math.cos(t)).toFixed(2)];}
+  function pt(a,r){var p=P(a,r);return p[0]+','+p[1];}
+  function rose(labels){
+    var s='<circle class="ring" r="92"/><circle class="ring" r="78" opacity=".45"/>',i,a,p,q;
+    for(i=0;i<32;i++){a=i*11.25;p=P(a,i%2===0?84:88);q=P(a,92);s+='<line class="tick" x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'"/>';}
+    var d=[[45,52],[135,52],[225,52],[315,52],[0,80],[90,80],[180,80],[270,80]];
+    for(i=0;i<d.length;i++){a=d[i][0];
+      s+='<g'+(a===0?' class="north"':'')+'><polygon class="pa" points="'+pt(a,d[i][1])+' '+pt(a-45,14)+' 0,0"/><polygon class="pb" points="'+pt(a,d[i][1])+' '+pt(a+45,14)+' 0,0"/></g>';}
+    if(labels)s+='<text class="lbl" x="0" y="-66">N</text><text class="lbl" x="66" y="0">E</text><text class="lbl" x="0" y="66">S</text><text class="lbl" x="-66" y="0">O</text>';
+    return s;
+  }
+  function waves(y0,rows,gap,amp,wl,cls){
+    var s='',r,x,pts;
+    for(r=0;r<rows;r++){pts=[];
+      for(x=0;x<=1000;x+=10){pts.push(x+','+(y0+r*gap+(amp+r*1.2)*Math.sin(x/wl*6.2832+r*1.3)).toFixed(1));}
+      s+='<polyline class="'+(cls||'s')+'" opacity="'+(1-r*0.06).toFixed(2)+'" points="'+pts.join(' ')+'"/>';}
+    return s;
+  }
+  var ART={
+    sea:function(){return '<circle class="sa" cx="690" cy="250" r="100"/><circle class="fa" cx="690" cy="250" r="62" opacity=".92"/>'+waves(330,10,28,5,70);},
+    pizza:function(){
+      var s='<circle class="s" cx="500" cy="300" r="215"/><circle class="s" cx="500" cy="300" r="178" opacity=".6"/>',i,a;
+      for(i=0;i<6;i++){a=i*60+30;s+='<line class="s" x1="500" y1="300" x2="'+(500+178*Math.sin(a*Math.PI/180)).toFixed(1)+'" y2="'+(300-178*Math.cos(a*Math.PI/180)).toFixed(1)+'" opacity=".55"/>';}
+      var t=[[430,215],[585,238],[470,372],[610,350],[395,310],[520,150],[560,300],[455,285]];
+      for(i=0;i<t.length;i++)s+='<circle class="fa" cx="'+t[i][0]+'" cy="'+t[i][1]+'" r="'+(i%2?13:9)+'" opacity=".9"/>';
+      s+='<path class="sa" d="M505 210Q540 180 568 205Q540 240 505 210Z"/><path class="sa" d="M380 372Q412 346 442 366Q414 400 380 372Z"/>';
+      return s;},
+    rose:function(){return '<g transform="translate(500 300) scale(2.7)">'+rose(true)+'</g>';},
+    plate:function(){
+      var s='<circle class="s" cx="500" cy="300" r="200"/><circle class="s" cx="500" cy="300" r="165" opacity=".6"/><circle class="sa" cx="500" cy="300" r="105"/>';
+      s+='<path class="s" d="M190 120V230Q190 275 215 275Q240 275 240 230V120M215 120V275M215 275V500"/>';
+      s+='<path class="s" d="M800 500V120Q850 170 836 330V500"/>';
+      for(var i=0;i<6;i++){var a=i*60+20;s+='<path class="sa" d="M'+pt(a,60)+'Q'+pt(a+25,36)+' '+pt(a+50,60)+'" transform="translate(500 300)" opacity=".8"/>';}
+      return s;},
+    sail:function(){
+      return '<circle class="fa" cx="820" cy="150" r="46" opacity=".9"/><line class="s" x1="500" y1="110" x2="500" y2="370"/><polygon class="s" points="492,120 492,355 340,355"/><polygon class="s" points="510,170 510,355 640,355"/><path class="s" d="M310 372H680L636 424H356Z"/>'+waves(430,6,26,5,80);},
+    olive:function(){
+      var s='<path class="s" d="M120 520C340 440 620 300 880 100"/>',i,t,x,y,dir;
+      for(i=1;i<=9;i++){t=i/10;x=120+760*t;y=520-420*t-Math.sin(t*3)*20;dir=i%2?-1:1;
+        s+='<ellipse class="s" cx="'+(x+dir*6).toFixed(1)+'" cy="'+(y+dir*30).toFixed(1)+'" rx="46" ry="14" transform="rotate('+(dir*-48-20)+' '+(x+dir*6).toFixed(1)+' '+(y+dir*30).toFixed(1)+')"/>';}
+      s+='<circle class="fa" cx="300" cy="448" r="11"/><circle class="fa" cx="560" cy="330" r="11"/><circle class="fa" cx="740" cy="200" r="11"/>';
+      return s;}
+  };
+  Array.prototype.forEach.call(document.querySelectorAll('[data-art]'),function(el){
+    var f=ART[el.getAttribute('data-art')];
+    if(f&&!el.querySelector('img'))el.innerHTML='<svg class="art" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Lámina decorativa, espacio para una foto">'+f()+'</svg>';
+  });
+  var logo=document.getElementById('logo-rose');if(logo)logo.innerHTML=rose(false);
+  var wv=document.getElementById('wave');
+  if(wv){var d='M0 30',x;for(x=0;x<=1200;x+=20)d+=' L'+x+' '+(30+14*Math.sin(x/1200*6.2832*5)).toFixed(1);wv.innerHTML='<path d="'+d+'"/>';}
+
+  /* ---------- Carrusel del hero ---------- */
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.hero .slide'));
+  var hero=document.querySelector('.hero');
+  var dotsBox=document.getElementById('dots'),cap=document.getElementById('hero-cap');
+  var cur=0,timer=null,dots=[];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.className='dot';b.setAttribute('aria-label','Imagen '+(i+1)+': '+s.getAttribute('data-cap'));
+    b.setAttribute('aria-current',i===0?'true':'false');
+    b.addEventListener('click',function(){go(i);restart();});
+    dotsBox.appendChild(b);dots.push(b);
+  });
+  /* Fotos 2-4 del hero: se descargan solo cuando la primera ya está lista (conexiones lentas) */
+  function loadRest(){slides.forEach(function(s){var im=s.querySelector('img[data-src]');if(im){im.srcset=im.getAttribute('data-srcset');im.src=im.getAttribute('data-src');im.removeAttribute('data-src');}});}
+  function ready(s){var im=s.querySelector('img');return !im||(im.complete&&im.naturalWidth>0);}
+  if(document.readyState==='complete')setTimeout(loadRest,300);else window.addEventListener('load',function(){setTimeout(loadRest,300);});
+  function go(i){
+    loadRest();
+    slides[cur].classList.remove('on');dots[cur].setAttribute('aria-current','false');
+    cur=i;slides[cur].classList.add('on');dots[cur].setAttribute('aria-current','true');
+    cap.textContent=slides[cur].hasAttribute('data-nocap')?'':slides[cur].getAttribute('data-cap');
+    hero.classList.toggle('light',slides[cur].hasAttribute('data-light'));
+  }
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  function start(){if(reduce||timer)return;timer=setInterval(function(){var n=(cur+1)%slides.length;if(ready(slides[n]))go(n);},5200);}
+  function restart(){stop();start();}
+  hero.addEventListener('mouseenter',stop);hero.addEventListener('mouseleave',start);
+  hero.addEventListener('focusin',stop);hero.addEventListener('focusout',start);
+  hero.classList.add('light');
+  start();
+
+  /* ---------- Menú ---------- */
+  var bb=document.getElementById('burger'),mp=document.getElementById('menu-pop');
+  function setMenu(o){mp.hidden=!o;bb.setAttribute('aria-expanded',o?'true':'false');}
+  bb.addEventListener('click',function(e){e.stopPropagation();setMenu(mp.hidden);});
+  mp.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  document.addEventListener('click',function(e){if(!mp.hidden&&!mp.contains(e.target))setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
+
+  document.querySelectorAll('.rev-btn').forEach(function(b){b.addEventListener('click',function(){var r=b.closest('.rev-block').querySelector('.rev-row');var c=r.querySelector('.rev');r.scrollBy({left:b.dataset.dir*(c.offsetWidth+20),behavior:'smooth'});});});
+
+  (function(){
+    var v=document.querySelector('.gal-view');if(!v)return;
+    var tr=v.querySelector('.gal-track'),sl=tr.querySelectorAll('.gal-slide'),cap=document.querySelector('.gal-cap'),cnt=document.querySelector('.gal-count'),i=0,first=true;
+    function place(){var s=sl[i];var x=v.clientWidth/2-(s.offsetLeft+s.offsetWidth/2);
+      if(first){tr.style.transition='none';}
+      tr.style.transform='translateX('+x+'px)';
+      if(first){void tr.offsetWidth;tr.style.transition='';first=false;}}
+    function go(n){i=(n+sl.length)%sl.length;
+      sl.forEach(function(e,k){e.classList.toggle('on',k===i);});
+      cap.textContent=sl[i].getAttribute('data-cap');cnt.textContent=(i+1)+' / '+sl.length;place();}
+    document.querySelector('.gal-prev').addEventListener('click',function(){go(i-1);});
+    document.querySelector('.gal-next').addEventListener('click',function(){go(i+1);});
+    sl.forEach(function(e,k){e.addEventListener('click',function(){if(k!==i)go(k);});});
+    var x0=null;
+    v.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    v.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(d)>40)go(i+(d<0?1:-1));});
+    v.setAttribute('tabindex','0');
+    v.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')go(i-1);if(e.key==='ArrowRight')go(i+1);});
+    window.addEventListener('resize',function(){first=true;place();});
+    go(0);
+  })();
+
+  /* ---------- Carga escalonada: primero la 1.ª foto, luego el resto ---------- */
+  (function(){
+    var g=document.querySelector('.gal-view');
+    function loadGal(){document.querySelectorAll('.gal-slide img[data-src]').forEach(function(i){i.src=i.getAttribute('data-src');i.removeAttribute('data-src');});}
+    function later(){setTimeout(loadGal,1200);}
+    if(document.readyState==='complete')later();else window.addEventListener('load',later);
+    setTimeout(loadGal,6000);
+  })();
+
+  /* ---------- Horario: igual en las dos sedes, todos los días ---------- */
+  var SLOTS=[[11*60,16*60],[19*60,24*60]];
+  function fmt(m){m=m%1440;var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
+  function madridMin(){
+    var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+    var o={};parts.forEach(function(p){o[p.type]=p.value;});
+    return parseInt(o.hour,10)*60+parseInt(o.minute,10);
+  }
+  var nowMin=madridMin(),openNow=null,nextSlot=null;
+  SLOTS.forEach(function(x){
+    if(nowMin>=x[0]&&nowMin<x[1])openNow=x;
+    else if(!nextSlot&&x[0]>nowMin)nextSlot=x;
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-status]'),function(el){
+    var txt=el.querySelector('[data-status-text]');
+    if(openNow){el.classList.add('open');txt.textContent='Abierto ahora · cierra a las '+fmt(openNow[1]);}
+    else{el.classList.add('closed');txt.textContent=nextSlot?('Cerrado ahora · abre a las '+fmt(nextSlot[0])):'Cerrado ahora · abre mañana a las '+fmt(SLOTS[0][0]);}
+  });
+
+  /* ---------- Copiar teléfono ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'),function(btn){
+    var num=btn.closest('.sede').querySelector('[data-phone]');
+    btn.addEventListener('click',function(){
+      var text='+34 '+num.textContent.trim();
+      function reset(m){btn.textContent=m;setTimeout(function(){btn.textContent='Copiar número';},1800);}
+      function fallback(){try{var r=document.createRange();r.selectNodeContents(num);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}reset('Número seleccionado');}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){reset('Copiado');},fallback);}else{fallback();}
+    });
+  });
+})();
+</script>
+
+
+</body></html>
